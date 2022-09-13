@@ -4,6 +4,7 @@
 #include <wiringPi.h>
 #include "Listener.h"
 #include "Controller.h"
+#include "View.h"
 
 
 int main()
@@ -12,12 +13,18 @@ int main()
 
     Button button1(27);
     Led led1(25);
-    Controller control(&led1);
+    Led led2(24);
+    Led led3(23);
+    Led led4(22);
+    Led led5(21);
+    View view(&led1,&led2,&led3,&led4,&led5);
+    Controller control(&view);
     Listener listener(&button1,&control);
-
+    
     while (1)
     {
         listener.checkEvent();
+        view.lightView();
         delay(50);
     }
 

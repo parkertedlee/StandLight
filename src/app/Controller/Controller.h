@@ -1,19 +1,19 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "Led.h"
+#include "View.h"
 #include <string>
 
-enum {LIGHT_OFF, LIGHT_ON};
+
 
 class Controller
 {
 private:
     int lightState;
-    Led *light;
+    View *view;
     
 public:
-    Controller(Led *Led);
+    Controller(View *viewer);
     virtual  ~Controller();
     void updateEvent(std::string strBtn);//매개변수를 문자열로 주겠다
 };
